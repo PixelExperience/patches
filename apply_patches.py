@@ -28,14 +28,14 @@ for repo in private_repositories:
         print('ERROR: Failed to clone private repository')
         sys.exit(result)
 
-for path in private_patches:
-    print('Applying patch "' + path['file'] + '" into dir "' + path['path'] +
+for patch in private_patches:
+    print('Applying patch "' + patch['file'] + '" into dir "' + patch['path'] +
           '"')
     cmd = [
-        'curl -s {0}/{1}/{2} | git am --3way'.format(patch_base_url, branch,
-                                                     path['file'])
+        'curl -sL {0}/{1}/{2} | git am --3way'.format(patch_base_url, branch,
+                                                     patch['file'])
     ]
-    result = subprocess.call([' '.join(cmd)], cwd=path['path'], shell=True)
+    result = subprocess.call([' '.join(cmd)], cwd=patch['path'], shell=True)
     if result != 0:
         print('ERROR: Failed to apply patch')
         sys.exit(result)
