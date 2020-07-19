@@ -17,7 +17,7 @@ private_patches = [{
 
 branch = "ten"
 repo_base_url = "https://bitbucket.org/PixelExperience"
-patch_base_url = "https://bitbucket.org/pixelexperience/patches/raw/master"
+patch_base_url = "https://bitbucket.org/PixelExperience/patches/raw/master"
 
 for repo in private_repositories:
     url = repo_base_url + '/' + repo['name']
