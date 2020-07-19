@@ -1,6 +1,6 @@
 # Usage curl -s https://raw.githubusercontent.com/PixelExperience/patches/ten/apply_patches.py | python3
 
-import subprocess, sys
+import subprocess, sys, time
 
 private_repositories = [{
     "name": "external_motorola_faceunlock",
@@ -31,6 +31,7 @@ for repo in private_repositories:
 for patch in private_patches:
     print('Applying patch "' + patch['file'] + '" into dir "' + patch['path'] +
           '"')
+    time.sleep(1)
     cmd = [
         'curl -sL {0}/{1}/{2} | git am --3way'.format(patch_base_url, branch,
                                                      patch['file'])
