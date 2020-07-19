@@ -29,9 +29,6 @@ for repo in private_repositories:
         sys.exit(result)
 
 for patch in private_patches:
-    print('Applying patch "' + patch['file'] + '" into dir "' + patch['path'] +
-          '"')
-    time.sleep(1)
     cmd = [
         'curl -sL {0}/{1}/{2} | git am --3way'.format(patch_base_url, branch,
                                                      patch['file'])
